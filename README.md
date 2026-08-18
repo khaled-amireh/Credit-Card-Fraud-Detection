@@ -156,6 +156,8 @@ The model achieved:
 
 ## Confusion Matrix
 
+![Confusion Matrix](images/Confusion%20M.png)
+
 | Result | Transactions |
 |---|---:|
 | True Positives | 1,884 |
@@ -175,6 +177,8 @@ The model prioritizes detecting fraudulent transactions, which explains the rela
 ---
 
 ## Precision-Recall Curve
+
+![Precision Recall Curve](images/Precision-Recall%20Curve.png)
 
 The Precision-Recall Curve is particularly useful for this project because the dataset is highly imbalanced.
 
