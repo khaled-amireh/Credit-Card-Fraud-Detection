@@ -152,7 +152,7 @@ The balanced class weight gives more importance to the minority fraud class.
 
 ---
 
-## 📈 Results
+## Results
 
 The model was evaluated on the completely unseen `fraudTest.csv` dataset.
 
