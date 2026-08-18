@@ -122,7 +122,7 @@ This prevents data leakage and provides a more realistic evaluation.
 
 ---
 
-## 🌲 Model
+## Model
 
 The final model is a Random Forest Classifier with the following parameters:
 
