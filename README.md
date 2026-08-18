@@ -12,25 +12,6 @@ The project uses a highly imbalanced dataset containing approximately **1.85 mil
 
 ---
 
-## Table of Contents
-
-- [Problem Overview](#-problem-overview)
-- [Dataset](#-dataset)
-- [Data Preprocessing](#️-data-preprocessing)
-- [Model](#-model)
-- [Results](#-results)
-- [Confusion Matrix](#-confusion-matrix)
-- [Precision-Recall Curve](#-precision-recall-curve)
-- [Data Leakage Prevention](#-data-leakage-prevention)
-- [Project Structure](#-project-structure)
-- [Installation](#️-installation)
-- [Usage](#-usage)
-- [Future Improvements](#-future-improvements)
-- [License](#-license)
-- [Author](#-author)
-
----
-
 ## Problem Overview
 
 Credit card fraud detection is a classification problem where the goal is to identify fraudulent transactions while minimizing false alarms.
@@ -173,7 +154,7 @@ The model achieved:
 
 ---
 
-## 🔍 Confusion Matrix
+## Confusion Matrix
 
 | Result | Transactions |
 |---|---:|
@@ -193,7 +174,7 @@ The model prioritizes detecting fraudulent transactions, which explains the rela
 
 ---
 
-## 📉 Precision-Recall Curve
+## Precision-Recall Curve
 
 The Precision-Recall Curve is particularly useful for this project because the dataset is highly imbalanced.
 
@@ -205,7 +186,7 @@ A higher PR-AUC indicates that the model maintains a good balance between precis
 
 ---
 
-## 🔒 Data Leakage Prevention
+## Data Leakage Prevention
 
 A major focus of the project was preventing data leakage.
 
@@ -237,54 +218,7 @@ This ensures that the test results represent the model's performance on previous
 
 ---
 
-## 📂 Project Structure
-
-```text
-Credit-Card-Fraud-Detection/
-│
-├── data/
-│   ├── fraudTrain.csv
-│   └── fraudTest.csv
-│
-├── notebooks/
-│   └── fraud_detection.ipynb
-│
-├── src/
-│   ├── preprocessing.py
-│   ├── train.py
-│   └── evaluate.py
-│
-├── LICENSE
-└── README.md
-```
-
-> Adjust this section to match your actual repository layout.
-
----
-
-## ⚙️ Installation
-
-Clone the repository and install the required dependencies:
-
-```bash
-git clone https://github.com/khaled-amireh/Credit-Card-Fraud-Detection.git
-cd Credit-Card-Fraud-Detection
-pip install -r requirements.txt
-```
-
-### Requirements
-
-```text
-pandas
-numpy
-scikit-learn
-seaborn
-matplotlib
-```
-
----
-
-## 🚀 Usage
+## Usage
 
 1. Place `fraudTrain.csv` and `fraudTest.csv` inside the `data/` directory.
 2. Run the preprocessing and training pipeline:
@@ -301,7 +235,7 @@ python src/evaluate.py
 
 ---
 
-## 🔮 Future Improvements
+## Future Improvements
 
 - Experiment with gradient boosting models (XGBoost, LightGBM) for comparison.
 - Apply SMOTE or other resampling techniques alongside class weighting.
@@ -310,13 +244,7 @@ python src/evaluate.py
 
 ---
 
-## 📄 License
-
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
-
----
-
-## 👤 Author
+## Author
 
 **Khaled Amireh**
 GitHub: [@khaled-amireh](https://github.com/khaled-amireh)
