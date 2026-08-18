@@ -27,6 +27,8 @@ The main challenges are:
 
 ## Dataset
 
+* **Dataset Source**: Download the official transaction files from [Kaggle - Fraud Detection Dataset](https://www.kaggle.com/datasets/kartik2112/fraud-detection).
+
 The project uses separate training and testing datasets:
 
 | Dataset | Transactions |
