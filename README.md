@@ -1,4 +1,4 @@
-# 💳 Credit Card Fraud Detection using Random Forest
+# Credit Card Fraud Detection using Random Forest
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
 ![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.0%2B-orange)
@@ -12,7 +12,7 @@ The project uses a highly imbalanced dataset containing approximately **1.85 mil
 
 ---
 
-## 📑 Table of Contents
+## Table of Contents
 
 - [Problem Overview](#-problem-overview)
 - [Dataset](#-dataset)
@@ -31,7 +31,7 @@ The project uses a highly imbalanced dataset containing approximately **1.85 mil
 
 ---
 
-## 📌 Problem Overview
+## Problem Overview
 
 Credit card fraud detection is a classification problem where the goal is to identify fraudulent transactions while minimizing false alarms.
 
@@ -44,7 +44,7 @@ The main challenges are:
 
 ---
 
-## 📊 Dataset
+## Dataset
 
 The project uses separate training and testing datasets:
 
@@ -63,7 +63,7 @@ The target column is `is_fraud`:
 
 ---
 
-## 🛠️ Data Preprocessing
+## Data Preprocessing
 
 ### 1. Removing High-Cardinality Features
 
