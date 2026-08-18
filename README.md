@@ -218,23 +218,6 @@ This ensures that the test results represent the model's performance on previous
 
 ---
 
-## Usage
-
-1. Place `fraudTrain.csv` and `fraudTest.csv` inside the `data/` directory.
-2. Run the preprocessing and training pipeline:
-
-```bash
-python src/train.py
-```
-
-3. Evaluate the trained model:
-
-```bash
-python src/evaluate.py
-```
-
----
-
 ## Future Improvements
 
 - Experiment with gradient boosting models (XGBoost, LightGBM) for comparison.
