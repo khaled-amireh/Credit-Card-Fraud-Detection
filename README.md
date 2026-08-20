@@ -236,4 +236,3 @@ This ensures that the test results represent the model's performance on previous
 ## Author
 
 **Khaled Amireh**
-GitHub: [@khaled-amireh](https://github.com/khaled-amireh)
