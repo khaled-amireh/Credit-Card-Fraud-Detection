@@ -224,8 +224,6 @@ This ensures that the test results represent the model's performance on previous
 
 ---
 
-## Future Improvements
-
   
 
 ---
