@@ -228,7 +228,7 @@ This ensures that the test results represent the model's performance on previous
 
 - Experiment with gradient boosting models (XGBoost, LightGBM) for comparison.
 - Apply SMOTE or other resampling techniques alongside class weighting.
-- Perform hyperparameter tuning using GridSearchCV or RandomizedSearchCV.
+- 
 
 ---
 
