@@ -1,6 +1,5 @@
 # Credit Card Fraud Detection
 
-![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.0%2B-orange)
 ![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-150458)
 ![Seaborn](https://img.shields.io/badge/Seaborn-Visualization-3776AB)
 ![License](https://img.shields.io/badge/License-MIT-green)
