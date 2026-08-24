@@ -1,6 +1,5 @@
 # Credit Card Fraud Detection
 
-![License](https://img.shields.io/badge/License-MIT-green)
 
 An end-to-end Machine Learning project for detecting fraudulent credit card transactions using a tuned **Random Forest Classifier**.
 
