@@ -1,5 +1,6 @@
 # Credit Card Fraud Detection
 
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
 
 An end-to-end Machine Learning project for detecting fraudulent credit card transactions using a tuned **Random Forest Classifier**.
 
