@@ -98,7 +98,7 @@ Applied through a `ColumnTransformer` that was **fitted only on the training dat
 
 ---
 
-## 🧠 Model
+##  Model
 
 ### Final Configuration
 
