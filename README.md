@@ -18,7 +18,7 @@
 
 ---
 
-## 🎯 Problem Overview
+##  Problem Overview
 
 Credit card fraud detection is a classification problem where the goal is to identify fraudulent transactions while minimizing false alarms — and it's a problem where the "easy" baseline is actively misleading. A model that predicts "not fraud" for every transaction in this dataset would already be **>99% accurate**, which is exactly why accuracy alone is the wrong metric here.
 
