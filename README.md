@@ -279,7 +279,7 @@ jupyter notebook notebooks/credit_card_fraud_detection.ipynb
 
 ---
 
-## ⚠️ Limitations
+##  Limitations
 
 - The model has not been cross-validated across multiple folds — reported metrics reflect performance on a single, fixed test split.
 - Precision (57%) means a meaningful share of flagged transactions are false alarms; in a production setting this would need to be weighed against the operational cost of manual review.
@@ -287,7 +287,7 @@ jupyter notebook notebooks/credit_card_fraud_detection.ipynb
 
 ---
 
-## 🚀 Future Improvements
+##  Future Improvements
 
 - [ ] Explicit threshold tuning to optimize for a target business cost function (cost of missed fraud vs. cost of false alarms)
 - [ ] Cross-validation for more robust performance estimates
@@ -297,10 +297,9 @@ jupyter notebook notebooks/credit_card_fraud_detection.ipynb
 
 ---
 
-## 👤 Author
+##  Author
 
 **Khaled Amireh**
-[GitHub](https://github.com/khaled-amireh)
 
 ---
 
