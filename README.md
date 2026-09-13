@@ -165,8 +165,8 @@ The precision/recall trade-off here (57% precision) is a deliberate consequence 
 |---|---:|---|
 |  True Positive | 1,884 | Fraud correctly detected |
 |  False Negative | 261 | Fraud the model failed to catch |
-| ✅ True Negative | 552,137 | Legitimate transaction correctly identified |
-| ⚠️ False Positive | 1,437 | Legitimate transaction incorrectly flagged |
+|  True Negative | 552,137 | Legitimate transaction correctly identified |
+|  False Positive | 1,437 | Legitimate transaction incorrectly flagged |
 
 The relatively small False Negative count (261, against 552K+ correctly handled legitimate transactions) reflects the model's deliberate lean toward catching fraud, at the acceptable cost of the 1,437 false alarms.
 
