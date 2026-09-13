@@ -56,7 +56,7 @@ The project uses the dataset's native train/test split, keeping evaluation stric
 
 ---
 
-## 🧹 Data Preprocessing
+##  Data Preprocessing
 
 ### 1 · Removing High-Cardinality Features
 
