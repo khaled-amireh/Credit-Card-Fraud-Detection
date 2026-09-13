@@ -155,7 +155,7 @@ The precision/recall trade-off here (57% precision) is a deliberate consequence 
 
 ---
 
-## 🧮 Confusion Matrix
+##  Confusion Matrix
 
 <p align="center">
   <img src="images/Confusion%20M.png" alt="Confusion Matrix" width="600">
@@ -163,8 +163,8 @@ The precision/recall trade-off here (57% precision) is a deliberate consequence 
 
 | Result | Count | Interpretation |
 |---|---:|---|
-| ✅ True Positive | 1,884 | Fraud correctly detected |
-| ❌ False Negative | 261 | Fraud the model failed to catch |
+|  True Positive | 1,884 | Fraud correctly detected |
+|  False Negative | 261 | Fraud the model failed to catch |
 | ✅ True Negative | 552,137 | Legitimate transaction correctly identified |
 | ⚠️ False Positive | 1,437 | Legitimate transaction incorrectly flagged |
 
