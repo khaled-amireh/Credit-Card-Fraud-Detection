@@ -172,7 +172,7 @@ The relatively small False Negative count (261, against 552K+ correctly handled 
 
 ---
 
-## 📉 Precision-Recall Curve
+##  Precision-Recall Curve
 
 <p align="center">
   <img src="images/Precision-Recall%20Curve.png" alt="Precision-Recall Curve" width="600">
@@ -182,7 +182,7 @@ For a dataset this imbalanced, the **ROC curve can look deceptively good** becau
 
 <div align="center">
 
-### 📐 PR-AUC = 0.86
+###  PR-AUC = 0.86
 
 </div>
 
@@ -190,7 +190,7 @@ A PR-AUC of 0.86 indicates the model sustains a strong precision/recall balance 
 
 ---
 
-## 🔒 Data Leakage Prevention
+##  Data Leakage Prevention
 
 Preventing leakage was a central design constraint of this project, not an afterthought — with a dataset this imbalanced, even small leaks can make results look far better than they'd actually be in production.
 
