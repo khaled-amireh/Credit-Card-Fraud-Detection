@@ -26,7 +26,7 @@ Credit card fraud detection is a classification problem where the goal is to ide
 
 | Challenge | Why It Matters |
 |---|---|
-| ⚖️ **Extreme Class Imbalance** | Fraudulent transactions make up less than 1% of all transactions — naive models default to predicting the majority class |
+|  **Extreme Class Imbalance** | Fraudulent transactions make up less than 1% of all transactions — naive models default to predicting the majority class |
 | 🔓 **Data Leakage Risk** | Any preprocessing step fitted on the full dataset (including test data) inflates performance artificially |
 | 🔢 **High Cardinality** | Features like `merchant`, `job`, `city`, and `trans_num` can blow up dimensionality and drive overfitting if used naively |
 | 🚨 **Asymmetric Cost of Errors** | Missing a fraudulent transaction (false negative) is typically far more costly than incorrectly flagging a legitimate one (false positive) |
