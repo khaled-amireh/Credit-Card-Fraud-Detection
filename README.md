@@ -226,7 +226,7 @@ The `OneHotEncoder` / `ColumnTransformer` is **fitted exclusively on the trainin
 
 ---
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 | Category | Tools |
 |---|---|
@@ -238,7 +238,7 @@ The `OneHotEncoder` / `ColumnTransformer` is **fitted exclusively on the trainin
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 Credit-Card-Fraud-Detection/
@@ -257,7 +257,7 @@ Credit-Card-Fraud-Detection/
 
 ---
 
-## ⚙️ Installation
+##  Installation
 
 ```bash
 # 1. Clone the repository
@@ -275,7 +275,7 @@ pip install -r requirements.txt
 jupyter notebook notebooks/credit_card_fraud_detection.ipynb
 ```
 
-> ⚠️ The raw CSV files are not included in this repository due to size. Download `fraudTrain.csv` and `fraudTest.csv` from the [Kaggle dataset page](https://www.kaggle.com/datasets/kartik2112/fraud-detection) and place them in the `data/` folder before running the notebook.
+>  The raw CSV files are not included in this repository due to size. Download `fraudTrain.csv` and `fraudTest.csv` from the [Kaggle dataset page](https://www.kaggle.com/datasets/kartik2112/fraud-detection) and place them in the `data/` folder before running the notebook.
 
 ---
 
