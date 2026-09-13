@@ -35,7 +35,7 @@ These constraints shaped every downstream decision in this project — from whic
 
 ---
 
-## 📊 Dataset
+##  Dataset
 
 **Source:** [Fraud Detection Dataset — Kaggle](https://www.kaggle.com/datasets/kartik2112/fraud-detection)
 
