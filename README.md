@@ -128,13 +128,13 @@ The `class_weight='balanced'` setting is doing a lot of the heavy lifting here �
 
 ---
 
-## 📈 Results
+##  Results
 
 Evaluated on **`fraudTest.csv`** — a completely held-out, unseen dataset.
 
 <div align="center">
 
-### 🎯 Fraud Recall: **88%**
+###  Fraud Recall: **88%**
 
 </div>
 
