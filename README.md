@@ -1,6 +1,6 @@
 <div align="center">
 
-# 💳 Credit Card Fraud Detection
+#  Credit Card Fraud Detection
 
 ### Detecting fraudulent transactions in 1.85M+ records with a tuned Random Forest
 
