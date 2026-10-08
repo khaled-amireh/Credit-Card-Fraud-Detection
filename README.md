@@ -284,7 +284,7 @@ The `OneHotEncoder` / `ColumnTransformer` is **fitted exclusively on the trainin
 
 | Category | Tools |
 |---|---|
-| Language | 🐍 Python |
+| Language |  Python |
 | Data Handling | Pandas, NumPy |
 | Machine Learning | Scikit-learn (Random Forest Classifier) |
 | Visualization | Matplotlib |
@@ -292,7 +292,7 @@ The `OneHotEncoder` / `ColumnTransformer` is **fitted exclusively on the trainin
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 Credit-Card-Fraud-Detection/
@@ -311,7 +311,7 @@ Credit-Card-Fraud-Detection/
 
 ---
 
-## ⚙️ Installation
+##  Installation
 
 ```bash
 # 1. Clone the repository
@@ -334,7 +334,7 @@ jupyter notebook notebooks/credit_card_fraud_detection.ipynb
 
 ---
 
-## ⚠️ Limitations
+##  Limitations
 
 <details>
 <summary><b>Click to see what this model does not do (yet)</b></summary>
@@ -349,7 +349,7 @@ jupyter notebook notebooks/credit_card_fraud_detection.ipynb
 
 ---
 
-## 🚀 Future Improvements
+##  Future Improvements
 
 - [ ] Tune the decision threshold against a real cost function (missed fraud vs. false alarm)
 - [ ] Add cross-validation for more robust estimates
@@ -359,7 +359,7 @@ jupyter notebook notebooks/credit_card_fraud_detection.ipynb
 
 ---
 
-## 👤 Author
+##  Author
 
 <p align="center">
   <b>Khaled Amireh</b><br/>
