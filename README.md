@@ -125,7 +125,7 @@ Keeping raw IDs like `cc_num` or `trans_num` would let the model *memorize* spec
 </details>
 
 <details>
-<summary><b>⏰ Step 2: Date and time features (click to expand)</b></summary>
+<summary><b> Step 2: Date and time features (click to expand)</b></summary>
 
 <br/>
 
@@ -140,7 +140,7 @@ Fraud often hides in *when* a purchase happens (unusual hours), and a raw timest
 </details>
 
 <details>
-<summary><b>🎂 Step 3: Cardholder age (click to expand)</b></summary>
+<summary><b> Step 3: Cardholder age (click to expand)</b></summary>
 
 <br/>
 
@@ -149,7 +149,7 @@ Fraud often hides in *when* a purchase happens (unusual hours), and a raw timest
 </details>
 
 <details>
-<summary><b>🔢 Step 4: Categorical encoding (click to expand)</b></summary>
+<summary><b> Step 4: Categorical encoding (click to expand)</b></summary>
 
 <br/>
 
