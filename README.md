@@ -363,7 +363,6 @@ jupyter notebook notebooks/credit_card_fraud_detection.ipynb
 
 <p align="center">
   <b>Khaled Amireh</b><br/>
-  <a href="https://github.com/khaled-amireh">🔗 GitHub</a>
 </p>
 
 <p align="center"><i>If this project helped you, drop a ⭐ on the repo.</i></p>
