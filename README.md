@@ -41,7 +41,7 @@
 Imagine a security guard watching 555,719 shoppers walk past. Only about 2,145 of them are thieves. The guard can't just wave everyone through (that would be "99.6% correct" and totally useless), so he has to learn the *behavior* of thieves: odd hours, odd categories, odd amounts. That is what this model learned to do.
 
 ```
- Transactions  ➜  🧹 Clean & engineer features  ➜  🌲 Random Forest  ➜  🚨 Fraud alert / ✅ All clear
+ Transactions  ➜   Clean & engineer features  ➜   Random Forest  ➜  🚨 Fraud alert / ✅ All clear
 ```
 
 ---
