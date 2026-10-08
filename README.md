@@ -68,8 +68,8 @@ pie showData title Test set: legitimate vs fraudulent transactions
 
 | | Villain | Why it is dangerous |
 |:-:|---|---|
-| ⚖️ | **Extreme class imbalance** | Fraud is under 1% of the data, so naive models just predict "legit" for everything |
-| 🔓 | **Data leakage** | Preprocessing fitted on test data quietly inflates results and fools you |
+|  | **Extreme class imbalance** | Fraud is under 1% of the data, so naive models just predict "legit" for everything |
+|  | **Data leakage** | Preprocessing fitted on test data quietly inflates results and fools you |
 | 🔢 | **High cardinality** | Columns like `merchant`, `city`, `trans_num` explode dimensionality and cause memorization |
 | 💸 | **Unequal cost of mistakes** | A missed fraud is a direct financial loss; a false alarm is just a quick review |
 
