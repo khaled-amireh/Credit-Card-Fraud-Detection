@@ -109,7 +109,7 @@ flowchart LR
 ```
 
 <details>
-<summary><b>🗑️ Step 1: Removing high-cardinality features (click to expand)</b></summary>
+<summary><b> Step 1: Removing high-cardinality features (click to expand)</b></summary>
 
 <br/>
 
