@@ -91,16 +91,16 @@ The dataset's own train/test split is used as-is, which keeps the final evaluati
 
 ---
 
-## 🛠️ The Detection Pipeline
+##  The Detection Pipeline
 
 ```mermaid
 flowchart LR
-    A["📥 Raw transactions"] --> B["🗑️ Drop identifiers<br/>and high-cardinality columns"]
-    B --> C["⏰ Extract hour, day, month"]
-    C --> D["🎂 Compute cardholder age"]
-    D --> E["🔢 One-Hot Encode<br/>category, gender"]
-    E --> F["🌲 Train Random Forest<br/>class_weight = balanced"]
-    F --> G["🚨 Predict fraud<br/>on unseen test set"]
+    A[" Raw transactions"] --> B[" Drop identifiers<br/>and high-cardinality columns"]
+    B --> C[" Extract hour, day, month"]
+    C --> D[" Compute cardholder age"]
+    D --> E[" One-Hot Encode<br/>category, gender"]
+    E --> F[" Train Random Forest<br/>class_weight = balanced"]
+    F --> G[" Predict fraud<br/>on unseen test set"]
 
     classDef step fill:#1e1b4b,stroke:#6366f1,color:#fff;
     classDef alert fill:#7f1d1d,stroke:#ef4444,color:#fff;
