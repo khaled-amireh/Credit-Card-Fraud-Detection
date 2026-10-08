@@ -234,14 +234,14 @@ pie showData title Actual fraud cases in the test set
 
 | | Result | Count | Meaning |
 |:-:|---|---:|---|
-| ✅ | True Positive | 1,884 | Fraud correctly caught |
-| ❌ | False Negative | 261 | Fraud that slipped through |
-| ✅ | True Negative | 552,137 | Legitimate, correctly cleared |
-| ⚠️ | False Positive | 1,437 | Legitimate, wrongly flagged |
+|  | True Positive | 1,884 | Fraud correctly caught |
+|  | False Negative | 261 | Fraud that slipped through |
+|  | True Negative | 552,137 | Legitimate, correctly cleared |
+|  | False Positive | 1,437 | Legitimate, wrongly flagged |
 
 Put simply: to catch **1,884** thieves, the model raised **1,437** false alarms among more than half a million honest purchases.
 
-### 📉 Precision-Recall Curve
+###  Precision-Recall Curve
 
 <p align="center">
   <img src="images/Precision-Recall%20Curve.png" alt="Precision-Recall Curve" width="600">
@@ -249,24 +249,24 @@ Put simply: to catch **1,884** thieves, the model raised **1,437** false alarms 
 
 On data this lopsided, the ROC curve can look flattering because it is dominated by the huge pile of easy true negatives. The **Precision-Recall curve** looks only at the rare fraud class, so it is the more honest judge.
 
-<p align="center"><b>📐 PR-AUC = 0.86</b></p>
+<p align="center"><b> PR-AUC = 0.86</b></p>
 
 ---
 
-## 🔒 The Airtight Exam Room (Leakage Prevention)
+##  The Airtight Exam Room (Leakage Prevention)
 
 Think of the test set as a **final exam**. If the student sees the exam questions while studying, a perfect score means nothing. Here, the test data is locked away until the very end.
 
 ```mermaid
 flowchart TB
-    subgraph TRAIN["📚 Study room: training data"]
+    subgraph TRAIN[" Study room: training data"]
         direction LR
-        T1["Feature engineering"] --> T2["🔧 FIT the ColumnTransformer<br/>(only here)"] --> T3["Transform training data"] --> T4["🌲 Train Random Forest"]
+        T1["Feature engineering"] --> T2[" FIT the ColumnTransformer<br/>(only here)"] --> T3["Transform training data"] --> T4[" Train Random Forest"]
     end
 
-    subgraph TEST["📝 Exam room: test data"]
+    subgraph TEST[" Exam room: test data"]
         direction LR
-        E1["Same feature engineering"] --> E2["Transform with the<br/>already-fitted transformer<br/>(never re-fit)"] --> E3["🚨 Evaluate model"]
+        E1["Same feature engineering"] --> E2["Transform with the<br/>already-fitted transformer<br/>(never re-fit)"] --> E3[" Evaluate model"]
     end
 
     T2 -. "fitted transformer is reused" .-> E2
@@ -280,7 +280,7 @@ The `OneHotEncoder` / `ColumnTransformer` is **fitted exclusively on the trainin
 
 ---
 
-## 🧰 Technologies Used
+##  Technologies Used
 
 | Category | Tools |
 |---|---|
