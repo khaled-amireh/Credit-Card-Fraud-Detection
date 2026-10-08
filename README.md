@@ -75,7 +75,7 @@ pie showData title Test set: legitimate vs fraudulent transactions
 
 ---
 
-## 📂 Dataset
+##  Dataset
 
 **Source:** [Fraud Detection Dataset on Kaggle](https://www.kaggle.com/datasets/kartik2112/fraud-detection)
 
@@ -87,7 +87,7 @@ The dataset's own train/test split is used as-is, which keeps the final evaluati
 | `fraudTest.csv` | 555,719 |
 | **Total** | **1,852,394** |
 
-**Target variable `is_fraud`:** `0` = ✅ legitimate, `1` = 🚨 fraudulent
+**Target variable `is_fraud`:** `0` =  legitimate, `1` =  fraudulent
 
 ---
 
