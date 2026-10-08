@@ -168,7 +168,7 @@ The `ColumnTransformer` was **fitted only on the training data**, then reused to
 
 ---
 
-## 🌲 The Model
+##  The Model
 
 ```python
 RandomForestClassifier(
@@ -185,10 +185,10 @@ RandomForestClassifier(
 
 | Why Random Forest? | What it gives this problem |
 |---|---|
-| 🌿 Handles nonlinear patterns | Fraud rarely follows a clean straight line |
-| 🧩 Mixes feature types | Numbers and one-hot categories work together |
-| 🗳️ Ensemble of trees | Many trees voting beats one tree guessing |
-| ⚖️ `class_weight='balanced'` | Makes missing a fraud hurt more during training |
+|  Handles nonlinear patterns | Fraud rarely follows a clean straight line |
+|  Mixes feature types | Numbers and one-hot categories work together |
+|  Ensemble of trees | Many trees voting beats one tree guessing |
+|  `class_weight='balanced'` | Makes missing a fraud hurt more during training |
 
 > [!TIP]
 > **The secret weapon is `class_weight='balanced'`.** Instead of resampling the data with SMOTE or undersampling, the model is simply *punished harder* for missing the rare fraud class. The full, undistorted dataset stays intact.
