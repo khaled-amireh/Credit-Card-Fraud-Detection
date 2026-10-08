@@ -195,11 +195,11 @@ RandomForestClassifier(
 
 ---
 
-## 📊 Results
+##  Results
 
 Everything below is measured on **`fraudTest.csv`**, data the model never saw during training.
 
-### 🏆 The Scoreboard
+###  The Scoreboard
 
 ```
 Fraud Recall      ██████████████████░░  88%     caught 1,884 of 2,145 frauds
@@ -215,7 +215,7 @@ Accuracy          ████████████████████  
 | **PR-AUC** | 0.86 | Good precision/recall balance, even on this lopsided data |
 | **Accuracy** | 99.69% | Correct overall, but remember the 99.6% lazy baseline |
 
-### 🎯 Where did the 2,145 real frauds go?
+###  Where did the 2,145 real frauds go?
 
 ```mermaid
 pie showData title Actual fraud cases in the test set
@@ -226,7 +226,7 @@ pie showData title Actual fraud cases in the test set
 > [!IMPORTANT]
 > **Why recall is the priority:** a missed fraud is real money gone. A false alarm is usually just a quick check or a text message to the customer. So the model was tuned to cast a *wider net*. The 57% precision is a deliberate trade-off, not an oversight.
 
-### 🧮 Confusion Matrix
+###  Confusion Matrix
 
 <p align="center">
   <img src="images/Confusion%20M.png" alt="Confusion Matrix" width="600">
