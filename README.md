@@ -46,7 +46,7 @@ Imagine a security guard watching 555,719 shoppers walk past. Only about 2,145 o
 
 ---
 
-## 🌾 The Haystack Problem
+## The Haystack Problem
 
 Fraud is rare. In the test set, only **2,145 out of 555,719** transactions are fraudulent, roughly **1 in every 259**.
 
