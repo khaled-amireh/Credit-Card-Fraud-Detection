@@ -167,7 +167,7 @@ The [notebook](credit_card_fraud_detection.ipynb) stores the classification repo
 
 The notebook's execution counters are nonsequential, and its encoding cell has no execution count despite later fitted-model outputs. Consequently, the saved artifacts substantiate the reported results but do **not** demonstrate a clean, top-to-bottom run of the current notebook. Dependencies are unpinned, and neither raw predictions nor a fitted model are stored. Exact reproduction remains to be confirmed in a fresh run with the downloaded data.
 
-## 08 🔍 Visual analysis
+## 08  Visual analysis
 
 ### Confusion matrix
 
