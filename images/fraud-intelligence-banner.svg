@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="320" viewBox="0 0 960 320" role="img" aria-labelledby="title description">
+  <title id="title">Fraud Intelligence</title>
+  <desc id="description">A static navy and teal illustration of transaction signals converging on a detection point. Decorative artwork, not model output or a live dashboard.</desc>
+  <defs>
+    <linearGradient id="background" x2="1" y2="1">
+      <stop stop-color="#070d19"/>
+      <stop offset="1" stop-color="#0d2030"/>
+    </linearGradient>
+    <radialGradient id="ambient">
+      <stop stop-color="#0e7490" stop-opacity=".24"/>
+      <stop offset="1" stop-color="#0e7490" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="signal">
+      <stop stop-color="#22d3ee" stop-opacity="0"/>
+      <stop offset=".35" stop-color="#22d3ee"/>
+      <stop offset=".7" stop-color="#5eead4"/>
+      <stop offset="1" stop-color="#5eead4" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="edge">
+      <stop stop-color="#22d3ee" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#22d3ee" stop-opacity=".65"/>
+      <stop offset="1" stop-color="#5eead4" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#91c8d9" stroke-opacity=".055"/>
+    </pattern>
+    <clipPath id="bounds"><rect x="1" y="1" width="958" height="318" rx="18"/></clipPath>
+  </defs>
+  <g clip-path="url(#bounds)">
+    <path fill="url(#background)" d="M0 0h960v320H0z"/>
+    <ellipse cx="744" cy="160" rx="290" ry="235" fill="url(#ambient)"/>
+    <path fill="url(#grid)" d="M440 0h520v320H440z"/>
+
+    <g fill="none" stroke="#3a8398" stroke-width="1" stroke-opacity=".32">
+      <path d="M530 160 584 102 654 70 722 106 842 84 895 150 830 237 722 247 635 225Z"/>
+      <path d="M584 102 635 225M654 70 722 247M722 106 830 237M842 84 722 247M895 150 722 106"/>
+      <path d="M584 102 748 160 830 237M635 225 748 160 842 84"/>
+    </g>
+
+    <g fill="none" stroke="#4bc6cb">
+      <circle cx="748" cy="160" r="77" stroke-opacity=".10"/>
+      <circle cx="748" cy="160" r="57" stroke-opacity=".24"/>
+      <path d="M748 76v16m0 136v16m-84-84h16m136 0h16" stroke-opacity=".5"/>
+      <path d="M707 120a57 57 0 0 1 73-7M789 200a57 57 0 0 1-73 7" stroke="#5eead4" stroke-opacity=".72" stroke-width="2"/>
+    </g>
+
+    <path d="M450 171h103l27-12 29 12h48l21-30 22 58 24-39h43l20-13 22 13h112" fill="none" stroke="url(#signal)" stroke-width="10" stroke-opacity=".055" stroke-linejoin="round"/>
+    <path d="M450 171h103l27-12 29 12h48l21-30 22 58 24-39h43l20-13 22 13h112" fill="none" stroke="url(#signal)" stroke-width="2" stroke-linejoin="round"/>
+
+    <g fill="#4ec9cf">
+      <circle cx="584" cy="102" r="3" opacity=".6"/>
+      <circle cx="654" cy="70" r="2.5" opacity=".45"/>
+      <circle cx="722" cy="106" r="3" opacity=".6"/>
+      <circle cx="842" cy="84" r="3" opacity=".65"/>
+      <circle cx="895" cy="150" r="2.5" opacity=".4"/>
+      <circle cx="830" cy="237" r="3" opacity=".6"/>
+      <circle cx="722" cy="247" r="2.5" opacity=".45"/>
+      <circle cx="635" cy="225" r="3" opacity=".6"/>
+    </g>
+    <circle cx="748" cy="160" r="13" fill="#5eead4" fill-opacity=".08" stroke="#5eead4" stroke-opacity=".3"/>
+    <circle cx="748" cy="160" r="4" fill="#99f6e4"/>
+
+    <path d="M54 79h34" stroke="#2dd4bf" stroke-width="3" stroke-linecap="round"/>
+    <g fill="#f1f5f9" font-family="'Segoe UI', Arial, sans-serif" font-size="43" font-weight="600" letter-spacing="2">
+      <text x="51" y="146">FRAUD</text>
+      <text x="51" y="199">INTELLIGENCE</text>
+    </g>
+    <path d="M54 230h75m8 0h23m8 0h8" stroke="#55b7c6" stroke-opacity=".5" stroke-width="2"/>
+    <path d="M360 319h600" stroke="url(#edge)" stroke-width="2"/>
+  </g>
+  <rect x=".5" y=".5" width="959" height="319" rx="18" fill="none" stroke="#244457" stroke-opacity=".75"/>
+</svg>
