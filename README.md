@@ -38,7 +38,7 @@ Fraud detection requires finding a small minority of suspicious transactions wit
 
 ---
 
-## 01 🎯 Executive overview
+## 01  Executive overview
 
 This repository implements an **offline binary classification experiment**: load labeled transactions, construct features, train a Random Forest, and evaluate fraud predictions and probability scores on a separate supplied test file. The [notebook](credit_card_fraud_detection.ipynb) contains exploration and saved results; the [Python script](credit_card_fraud_detection.py) expresses the same modeling workflow as a sequential program.
 
