@@ -1,4 +1,8 @@
-<p align="center"><strong>FRAUD INTELLIGENCE</strong><br/><sub>Machine Learning for Transaction Risk Detection</sub></p>
+<p align="center">
+  <img src="images/fraud-intelligence-banner.svg" alt="FRAUD INTELLIGENCE — abstract transaction signals on a navy and teal background" width="720"/>
+</p>
+
+<p align="center"><sub>Machine Learning for Transaction Risk Detection</sub></p>
 
 <h1 align="center">CREDIT CARD FRAUD DETECTION</h1>
 
@@ -17,24 +21,24 @@ Fraud detection requires finding a small minority of suspicious transactions wit
 
 | Dataset scale | Fraud recall | Fraud precision | PR-AUC |
 |:---:|:---:|:---:|:---:|
-| **1,852,394** | **88%** | **57%** | **0.86** |
+| **1,852,394** | **87.83%** | **57.00%** | **0.8610** |
 | Train + test transactions | 1,884 / 2,145 frauds found | 1,884 / 3,305 alerts correct | Across score thresholds |
 
-<p align="center"><sub>Headline values are rounded. Results are supported by saved notebook outputs and charts; training was not rerun for this documentation update.</sub></p>
+<p align="center"><sub>Held-out test results · Supported by saved notebook outputs and charts; training was not rerun for this documentation update.</sub></p>
 
 **Quick navigation**
 
 | Understand | Inspect | Reproduce & extend |
 |---|---|---|
-| [01 Overview](#01-executive-overview) | [04 Architecture](#04-system-architecture) | [10 Repository](#10-repository-structure) |
-| [02 Business problem](#02-the-business-problem) | [05 Preprocessing](#05-feature-engineering--preprocessing) | [11 Getting started](#11-getting-started) |
-| [03 Dataset](#03-dataset-intelligence) | [06 Model](#06-machine-learning-model) | [12 Trade-offs](#12-technical-decisions--trade-offs) |
-| [07 Results](#07-results--model-evaluation) | [08 Visual analysis](#08-visual-analysis) | [14 Roadmap](#14-future-roadmap) |
+| [01 Overview](#01--executive-overview) | [04 Architecture](#04-system-architecture) | [10 Repository](#10-repository-structure) |
+| [02 Business problem](#02-the-business-problem) | [05 Preprocessing](#05-feature-engineering--preprocessing) | [11 Getting started](#11--getting-started) |
+| [03 Dataset](#03-dataset-intelligence) | [06 Model](#06--machine-learning-model) | [12 Trade-offs](#12-technical-decisions--trade-offs) |
+| [07 Results](#07--results--model-evaluation) | [08 Visual analysis](#08--visual-analysis) | [14 Roadmap](#14--future-roadmap) |
 | [13 Limitations](#13-limitations) | [09 Reliability](#09-data-leakage--reliability) | [15 Author](#15-author--license) |
 
 ---
 
-## 01 Executive overview
+## 01 🎯 Executive overview
 
 This repository implements an **offline binary classification experiment**: load labeled transactions, construct features, train a Random Forest, and evaluate fraud predictions and probability scores on a separate supplied test file. The [notebook](credit_card_fraud_detection.ipynb) contains exploration and saved results; the [Python script](credit_card_fraud_detection.py) expresses the same modeling workflow as a sequential program.
 
@@ -65,7 +69,7 @@ Neither consequence has a measured monetary cost in this repository. Recall meas
 
 The target is **`is_fraud`**, where `0` means legitimate and `1` means fraud. The saved training schema contains **23 columns**, including the target and an exported row index. Inputs cover transaction amount and time, merchant category, cardholder demographics, location coordinates, and city population; identifiers and several descriptive fields are removed before modeling.
 
-The code reads the two files directly, preserving their supplied split without shuffling or creating a new split. The difference in fraud prevalence between the files also matters when interpreting precision. Download and placement instructions are in [Getting started](#11-getting-started); data is not tracked, and [`.gitignore`](.gitignore) excludes CSV files. Consult the dataset page for its data-use terms; the repository's MIT license applies to its code.
+The code reads the two files directly, preserving their supplied split without shuffling or creating a new split. The difference in fraud prevalence between the files also matters when interpreting precision. Download and placement instructions are in [Getting started](#11--getting-started); data is not tracked, and [`.gitignore`](.gitignore) excludes CSV files. Consult the dataset page for its data-use terms; the repository's MIT license applies to its code.
 
 ## 04 System architecture
 
@@ -107,7 +111,7 @@ Both implementations perform the following transformations:
 
 The column removals are verifiable decisions; reducing identity dependence and categorical expansion is a reasonable engineering interpretation, not a measured finding. Dropped fields such as merchant, occupation, and location may contain useful signal. Their removal does not prove that memorization or leakage has been eliminated.
 
-## 06 Machine learning model
+## 06 🧠 Machine learning model
 
 The script and notebook specify the same estimator and explicit parameters:
 
@@ -130,7 +134,7 @@ A Random Forest can model nonlinear interactions between amounts, temporal featu
 
 **Decision rule:** hard labels come from `classifier.predict(Xtest_df)`, which selects the class with the highest mean probability across trees. For these binary labels this corresponds to fraud probability **greater than 0.5**; an exact tie selects class `0`. PR analysis uses `predict_proba(Xtest_df)[:, 1]`. **No explicit decision-threshold optimization or probability calibration is implemented.**
 
-## 07 Results & model evaluation
+## 07 📊 Results & model evaluation
 
 The evaluation uses all **555,719 rows of the supplied test file**, including **2,145 frauds**. The table below reconciles the saved notebook report with the counts visible in both the notebook's embedded confusion matrix and the repository image.
 
@@ -163,19 +167,23 @@ The [notebook](credit_card_fraud_detection.ipynb) stores the classification repo
 
 The notebook's execution counters are nonsequential, and its encoding cell has no execution count despite later fitted-model outputs. Consequently, the saved artifacts substantiate the reported results but do **not** demonstrate a clean, top-to-bottom run of the current notebook. Dependencies are unpinned, and neither raw predictions nor a fitted model are stored. Exact reproduction remains to be confirmed in a fresh run with the downloaded data.
 
-## 08 Visual analysis
+## 08 🔍 Visual analysis
 
 ### Confusion matrix
 
-![Confusion matrix: 552,153 true negatives, 1,421 false positives, 261 false negatives, and 1,884 true positives.](images/Confusion%20M.png)
+<p align="center">
+  <img src="images/Confusion%20M.png" alt="Confusion matrix: 552,153 true negatives, 1,421 false positives, 261 false negatives, and 1,884 true positives." width="560"/>
+</p>
 
-*The repository's saved chart confirms the error counts above. The large legitimate class dominates the color scale, so read the fraud-row annotations alongside the precision and recall metrics.*
+*Figure 1. The saved confusion matrix confirms the error counts above. The legitimate class dominates the color scale; read the fraud-row annotations alongside precision and recall.*
 
 ### Precision–recall curve
 
-![Saved precision–recall curve for the fraud class, with a title reporting PR-AUC of 0.86.](images/Precision-Recall%20Curve.png)
+<p align="center">
+  <img src="images/Precision-Recall%20Curve.png" alt="Saved precision–recall curve for the fraud class, with a title reporting PR-AUC of 0.86." width="560"/>
+</p>
 
-*The curve shows how fraud precision and recall vary across score thresholds. Precision falls as recall approaches one. The title rounds the notebook's 0.8610 area to 0.86; no business operating threshold is selected by this plot.*
+*Figure 2. Fraud precision falls as recall approaches one across score thresholds. The title rounds the notebook's 0.8610 PR-AUC to 0.86; this plot does not select a business operating threshold.*
 
 Both are existing evaluation images, and their values agree with the notebook's embedded plots. They are displayed as stored; the purple chart styling is preserved.
 
@@ -199,6 +207,7 @@ The tracked project files are:
 ```text
 Credit-Card-Fraud-Detection/
 |-- images/
+|   |-- fraud-intelligence-banner.svg
 |   |-- Confusion M.png
 |   `-- Precision-Recall Curve.png
 |-- .gitignore
@@ -211,7 +220,7 @@ Credit-Card-Fraud-Detection/
 
 The notebook and script are at the **repository root**. There are no tracked `data/`, `notebooks/`, `src/`, or `models/` directories. Running the project requires two downloaded CSVs at the root; the setup below also creates an ignored local `venv/` directory.
 
-## 11 Getting started
+## 11 🚀 Getting started
 
 ### Prerequisites
 
@@ -302,7 +311,7 @@ These interpretations explain the current design; they are not conclusions from 
 - **Feature and decision policies are fixed.** Age uses the hard-coded year 2026; there is no threshold search, calibration, cost-sensitive evaluation, or feature ablation.
 - **Operational capabilities are absent.** No persisted preprocessing/model bundle, inference interface, schema validation, serving, monitoring, drift detection, or automated retraining is implemented. Missing-data remediation and subgroup performance analysis are also absent.
 
-## 14 Future roadmap
+## 14 🧰 Future roadmap
 
 All items below are **not implemented**.
 
