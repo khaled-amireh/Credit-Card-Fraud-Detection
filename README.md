@@ -220,7 +220,7 @@ Credit-Card-Fraud-Detection/
 
 The notebook and script are at the **repository root**. There are no tracked `data/`, `notebooks/`, `src/`, or `models/` directories. Running the project requires two downloaded CSVs at the root; the setup below also creates an ignored local `venv/` directory.
 
-## 11 🚀 Getting started
+## 11  Getting started
 
 ### Prerequisites
 
