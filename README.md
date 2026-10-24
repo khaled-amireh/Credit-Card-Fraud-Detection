@@ -311,7 +311,7 @@ These interpretations explain the current design; they are not conclusions from 
 - **Feature and decision policies are fixed.** Age uses the hard-coded year 2026; there is no threshold search, calibration, cost-sensitive evaluation, or feature ablation.
 - **Operational capabilities are absent.** No persisted preprocessing/model bundle, inference interface, schema validation, serving, monitoring, drift detection, or automated retraining is implemented. Missing-data remediation and subgroup performance analysis are also absent.
 
-## 14 🧰 Future roadmap
+## 14  Future roadmap
 
 All items below are **not implemented**.
 
