@@ -111,7 +111,7 @@ Both implementations perform the following transformations:
 
 The column removals are verifiable decisions; reducing identity dependence and categorical expansion is a reasonable engineering interpretation, not a measured finding. Dropped fields such as merchant, occupation, and location may contain useful signal. Their removal does not prove that memorization or leakage has been eliminated.
 
-## 06 🧠 Machine learning model
+## 06  Machine learning model
 
 The script and notebook specify the same estimator and explicit parameters:
 
