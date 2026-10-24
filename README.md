@@ -134,7 +134,7 @@ A Random Forest can model nonlinear interactions between amounts, temporal featu
 
 **Decision rule:** hard labels come from `classifier.predict(Xtest_df)`, which selects the class with the highest mean probability across trees. For these binary labels this corresponds to fraud probability **greater than 0.5**; an exact tie selects class `0`. PR analysis uses `predict_proba(Xtest_df)[:, 1]`. **No explicit decision-threshold optimization or probability calibration is implemented.**
 
-## 07 📊 Results & model evaluation
+## 07  Results & model evaluation
 
 The evaluation uses all **555,719 rows of the supplied test file**, including **2,145 frauds**. The table below reconciles the saved notebook report with the counts visible in both the notebook's embedded confusion matrix and the repository image.
 
