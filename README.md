@@ -1,174 +1,115 @@
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=venom&color=0:0f0c29,50:302b63,100:b91c1c&height=230&section=header&text=Credit%20Card%20Fraud%20Detection&fontSize=42&fontColor=ffffff&animation=twinkling&fontAlignY=40&desc=Finding%20the%20needle%20in%20a%201.85%20million-transaction%20haystack&descAlignY=62&descSize=17" alt="header"/>
-</p>
+<p align="center"><strong>FRAUD INTELLIGENCE</strong><br/><sub>Machine Learning for Transaction Risk Detection</sub></p>
+
+<h1 align="center">CREDIT CARD FRAUD DETECTION</h1>
+
+<p align="center">A class-weighted Random Forest study of rare-event detection at transaction scale.</p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=17&pause=900&color=FF4D4D&center=true&vCenter=true&width=650&lines=Scanning+1%2C852%2C394+transactions...;ALERT%3A+suspicious+pattern+detected;1+in+every+259+transactions+is+fraud;Random+Forest+caught+88%25+of+them" alt="typing-svg" />
+  <img src="https://img.shields.io/badge/Python-0f172a?style=flat-square&amp;logo=python&amp;logoColor=22d3ee" alt="Python"/>
+  <img src="https://img.shields.io/badge/scikit--learn-0f172a?style=flat-square&amp;logo=scikitlearn&amp;logoColor=22d3ee" alt="scikit-learn"/>
+  <img src="https://img.shields.io/badge/pandas-0f172a?style=flat-square&amp;logo=pandas&amp;logoColor=22d3ee" alt="pandas"/>
+  <img src="https://img.shields.io/badge/NumPy-0f172a?style=flat-square&amp;logo=numpy&amp;logoColor=22d3ee" alt="NumPy"/>
+  <img src="https://img.shields.io/badge/Jupyter-0f172a?style=flat-square&amp;logo=jupyter&amp;logoColor=22d3ee" alt="Jupyter"/>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-0f766e?style=flat-square" alt="Code license: MIT"/></a>
 </p>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Fraud%20Recall-88%25-b91c1c?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/PR--AUC-0.86-302b63?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Transactions-1.85M-0f766e?style=for-the-badge" />
-</p>
+Fraud detection requires finding a small minority of suspicious transactions without overwhelming legitimate customers with false alerts. This project applies timestamp features, one-hot encoding, and a class-weighted Random Forest to **1,852,394 simulated transactions** across the supplied training and test files. On the **555,719-transaction test set**, saved evaluation artifacts report **87.83% fraud recall**, **57.00% fraud precision**, and **0.8610 PR-AUC**.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.8%2B-3776AB?style=flat-square&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/Scikit--learn-Random%20Forest-F7931E?style=flat-square&logo=scikit-learn&logoColor=white" />
-  <img src="https://img.shields.io/badge/Pandas-Data%20Processing-150458?style=flat-square&logo=pandas&logoColor=white" />
-  <img src="https://img.shields.io/badge/Status-Completed-2ea44f?style=flat-square" />
-  <img src="https://img.shields.io/badge/License-MIT-lightgrey?style=flat-square" />
-</p>
+| Dataset scale | Fraud recall | Fraud precision | PR-AUC |
+|:---:|:---:|:---:|:---:|
+| **1,852,394** | **88%** | **57%** | **0.86** |
+| Train + test transactions | 1,884 / 2,145 frauds found | 1,884 / 3,305 alerts correct | Across score thresholds |
 
-<p align="center">
-  <a href="#-mission-briefing">Briefing</a> •
-  <a href="#-the-haystack-problem">The Problem</a> •
-  <a href="#-dataset">Dataset</a> •
-  <a href="#-the-detection-pipeline">Pipeline</a> •
-  <a href="#-results">Results</a> •
-  <a href="#-the-airtight-exam-room-leakage-prevention">Leakage Prevention</a> •
-  <a href="#-installation">Install</a>
-</p>
+<p align="center"><sub>Headline values are rounded. Results are supported by saved notebook outputs and charts; training was not rerun for this documentation update.</sub></p>
+
+**Quick navigation**
+
+| Understand | Inspect | Reproduce & extend |
+|---|---|---|
+| [01 Overview](#01-executive-overview) | [04 Architecture](#04-system-architecture) | [10 Repository](#10-repository-structure) |
+| [02 Business problem](#02-the-business-problem) | [05 Preprocessing](#05-feature-engineering--preprocessing) | [11 Getting started](#11-getting-started) |
+| [03 Dataset](#03-dataset-intelligence) | [06 Model](#06-machine-learning-model) | [12 Trade-offs](#12-technical-decisions--trade-offs) |
+| [07 Results](#07-results--model-evaluation) | [08 Visual analysis](#08-visual-analysis) | [14 Roadmap](#14-future-roadmap) |
+| [13 Limitations](#13-limitations) | [09 Reliability](#09-data-leakage--reliability) | [15 Author](#15-author--license) |
 
 ---
 
-##  Mission Briefing
+## 01 Executive overview
 
-> [!NOTE]
-> **In one sentence:** this project trains a Random Forest to scan credit card transactions and raise an alarm on the fraudulent ones, and it catches **88% of real fraud** on data it has never seen before.
+This repository implements an **offline binary classification experiment**: load labeled transactions, construct features, train a Random Forest, and evaluate fraud predictions and probability scores on a separate supplied test file. The [notebook](credit_card_fraud_detection.ipynb) contains exploration and saved results; the [Python script](credit_card_fraud_detection.py) expresses the same modeling workflow as a sequential program.
 
-**Explain it like I'm five:**
-Imagine a security guard watching 555,719 shoppers walk past. Only about 2,145 of them are thieves. The guard can't just wave everyone through (that would be "99.6% correct" and totally useless), so he has to learn the *behavior* of thieves: odd hours, odd categories, odd amounts. That is what this model learned to do.
+The central result is an observable detection trade-off: **1,884 frauds detected alongside 1,421 false alerts**. The project demonstrates minority-class evaluation and training-only encoder fitting. Deployment, automated transaction review, and a reusable inference service are outside the implemented scope.
 
-```
- Transactions  ➜   Clean & engineer features  ➜   Random Forest  ➜   Fraud alert /  All clear
-```
+## 02 The business problem
 
----
+Only **0.3860% of test transactions are fraudulent**, approximately one in 259. A classifier that always predicts legitimate would achieve **99.6140% accuracy and zero fraud recall**. This is an arithmetic reference derived from the test labels, not a separately trained baseline.
 
-## The Haystack Problem
+| Error | Consequence to investigate |
+|---|---|
+| **False negative:** fraud predicted legitimate | A fraudulent transaction escapes detection. |
+| **False positive:** legitimate predicted fraud | A legitimate transaction may require review or customer verification. |
 
-Fraud is rare. In the test set, only **2,145 out of 555,719** transactions are fraudulent, roughly **1 in every 259**.
+Neither consequence has a measured monetary cost in this repository. Recall measures how much fraud is found; precision measures how reliable the alerts are. Both matter when assessing investigation capacity and customer friction, so overall accuracy alone is insufficient.
 
-```
-Legitimate  ████████████████████████████████████████████████  553,574  (99.61%)
-Fraud       ▏                                                    2,145  ( 0.39%)
-```
+## 03 Dataset intelligence
+
+**Source:** [Credit Card Transactions Fraud Detection Dataset](https://www.kaggle.com/datasets/kartik2112/fraud-detection), published by **Kartik Shenoy (`kartik2112`)**. The publisher describes simulated transactions generated with [Brandon Harris's Sparkov Data Generation tool](https://github.com/namebrandon/Sparkov_Data_Generation), with an earlier training period and a later test period in 2019–2020. See the [publisher's dataset discussion](https://www.kaggle.com/kartik2112/discussion) for provenance and split context. These are synthetic records; measured performance does not establish performance on real payment traffic.
+
+| Supplied file | Transactions | Legitimate (`0`) | Fraud (`1`) | Fraud share |
+|---|---:|---:|---:|---:|
+| `fraudTrain.csv` | 1,296,675 | 1,289,169 | 7,506 | 0.5789% |
+| `fraudTest.csv` | 555,719 | 553,574 | 2,145 | 0.3860% |
+| **Total** | **1,852,394** | **1,842,743** | **9,651** | **0.5210%** |
+
+**Evidence:** training size comes from the notebook's saved `train_df.info()` output. Training class counts are derived from its binary target mean (`0.005788652`) and row count; the displayed mean's rounding interval admits only 7,506 positive labels. Test size and class counts come from the saved classification report and confusion matrix. The CSVs are not present in this checkout, so these counts were not independently recounted from raw data.
+
+The target is **`is_fraud`**, where `0` means legitimate and `1` means fraud. The saved training schema contains **23 columns**, including the target and an exported row index. Inputs cover transaction amount and time, merchant category, cardholder demographics, location coordinates, and city population; identifiers and several descriptive fields are removed before modeling.
+
+The code reads the two files directly, preserving their supplied split without shuffling or creating a new split. The difference in fraud prevalence between the files also matters when interpreting precision. Download and placement instructions are in [Getting started](#11-getting-started); data is not tracked, and [`.gitignore`](.gitignore) excludes CSV files. Consult the dataset page for its data-use terms; the repository's MIT license applies to its code.
+
+## 04 System architecture
 
 ```mermaid
-pie showData title Test set: legitimate vs fraudulent transactions
-    "Legitimate" : 553574
-    "Fraud" : 2145
+flowchart TB
+    A["Supplied train and test CSVs"] --> B["Separate target; drop selected columns"]
+    B --> C["Extract hour, day, month and fixed-year age"]
+    C --> D["One-hot encode category and gender"]
+    D --> E["Encoded training features"]
+    D --> F["Encoded test features"]
+    E --> G["Fit class-weighted Random Forest"]
+    G --> H["Test predictions and fraud scores"]
+    F --> H
+    H --> I["Classification report, confusion matrix and PR-AUC"]
+
+    classDef input fill:#0f172a,stroke:#22d3ee,color:#f8fafc;
+    classDef process fill:#132f3b,stroke:#2dd4bf,color:#f8fafc;
+    classDef result fill:#134e4a,stroke:#5eead4,color:#f8fafc;
+    class A,E,F input;
+    class B,C,D,G process;
+    class H,I result;
 ```
 
-> [!WARNING]
-> **Why accuracy lies here:** a lazy model that says "not fraud" every single time would score about **99.6% accuracy** while catching **zero** thieves. That is exactly why this project is judged on **Fraud Recall** and **PR-AUC**, not accuracy.
+The encoder is **fitted on training features only**, then reused to transform test features. Target values are excluded from the feature matrix and used for training or evaluation as appropriate. These steps are implemented sequentially, rather than packaged in a scikit-learn `Pipeline`.
 
-### The four villains this project had to defeat
+## 05 Feature engineering & preprocessing
 
-| | Villain | Why it is dangerous |
-|:-:|---|---|
-|  | **Extreme class imbalance** | Fraud is under 1% of the data, so naive models just predict "legit" for everything |
-|  | **Data leakage** | Preprocessing fitted on test data quietly inflates results and fools you |
-|  | **High cardinality** | Columns like `merchant`, `city`, `trans_num` explode dimensionality and cause memorization |
-|  | **Unequal cost of mistakes** | A missed fraud is a direct financial loss; a false alarm is just a quick review |
+Both implementations perform the following transformations:
 
----
+| Step | Actual implementation | Interpretation & constraint |
+|---|---|---|
+| Separate the label | Extract `is_fraud` into `ytrain_df` / `ytest_df`; drop it from features. | Keeps the target out of model inputs. |
+| Remove IDs and descriptive fields | Drop `Unnamed: 0`, `trans_num`, `cc_num`, `first`, `last`, `street`, `unix_time`, `merchant`, `job`, `city`, `state`, `zip`. | Removes identifiers and several categorical/location fields. No ablation study establishes the effect of each removal. |
+| Transaction time | Parse `trans_date_trans_time`; extract `hour`, `day`, `month`; drop the raw timestamp. | `day` is **day of month**, not day of week. No cyclic encoding or transaction-history features are implemented. |
+| Age feature | Parse `dob`; compute **`2026 - birth_year`**; drop `dob`. | A fixed-reference-year feature, **not age at transaction time**; it ignores birthday and transaction year. |
+| Categorical encoding | `OneHotEncoder(sparse_output=False, handle_unknown='ignore')` on `category` and `gender`. | Dense output; unseen values yield zeros for that feature's encoded columns. |
+| Numeric passthrough | `ColumnTransformer(remainder='passthrough')`. | Retains `amt`, `lat`, `long`, `city_pop`, `merch_lat`, `merch_long`, and the four engineered features without scaling. |
+| Missing-value inspection | Run `train_df.info()` and `train_df.isnull().sum()`. | Saved training outputs show no missing values. **No imputation, missing-row removal, or explicit test-set missingness check is implemented.** |
 
-##  Dataset
+The column removals are verifiable decisions; reducing identity dependence and categorical expansion is a reasonable engineering interpretation, not a measured finding. Dropped fields such as merchant, occupation, and location may contain useful signal. Their removal does not prove that memorization or leakage has been eliminated.
 
-**Source:** [Fraud Detection Dataset on Kaggle](https://www.kaggle.com/datasets/kartik2112/fraud-detection)
+## 06 Machine learning model
 
-The dataset's own train/test split is used as-is, which keeps the final evaluation honest.
-
-| Dataset | Transactions |
-|---|---:|
-| `fraudTrain.csv` | 1,296,675 |
-| `fraudTest.csv` | 555,719 |
-| **Total** | **1,852,394** |
-
-**Target variable `is_fraud`:** `0` =  legitimate, `1` =  fraudulent
-
----
-
-##  The Detection Pipeline
-
-```mermaid
-flowchart LR
-    A[" Raw transactions"] --> B[" Drop identifiers<br/>and high-cardinality columns"]
-    B --> C[" Extract hour, day, month"]
-    C --> D[" Compute cardholder age"]
-    D --> E[" One-Hot Encode<br/>category, gender"]
-    E --> F[" Train Random Forest<br/>class_weight = balanced"]
-    F --> G[" Predict fraud<br/>on unseen test set"]
-
-    classDef step fill:#1e1b4b,stroke:#6366f1,color:#fff;
-    classDef alert fill:#7f1d1d,stroke:#ef4444,color:#fff;
-    class A,B,C,D,E,F step;
-    class G alert;
-```
-
-<details>
-<summary><b> Step 1: Removing high-cardinality features (click to expand)</b></summary>
-
-<br/>
-
-These columns were dropped because they are identifiers or near-unique values that add dimensionality without teaching the model anything general:
-
-```text
-Unnamed: 0   trans_num   cc_num   first   last   street
-unix_time    merchant    job      city    state  zip
-```
-
-Keeping raw IDs like `cc_num` or `trans_num` would let the model *memorize* specific cards and transactions instead of learning real fraud patterns.
-
-</details>
-
-<details>
-<summary><b> Step 2: Date and time features (click to expand)</b></summary>
-
-<br/>
-
-`trans_date_trans_time` was parsed into a `datetime` and split into:
-
-- `hour`
-- `day`
-- `month`
-
-Fraud often hides in *when* a purchase happens (unusual hours), and a raw timestamp can't show that pattern to the model directly.
-
-</details>
-
-<details>
-<summary><b> Step 3: Cardholder age (click to expand)</b></summary>
-
-<br/>
-
-`dob` was converted to a `datetime` and combined with the transaction date to get the cardholder's **approximate age at the time of purchase**. Age is far more meaningful to a model than a raw birth date.
-
-</details>
-
-<details>
-<summary><b> Step 4: Categorical encoding (click to expand)</b></summary>
-
-<br/>
-
-`category` and `gender` were turned into numbers with `OneHotEncoder`:
-
-```python
-OneHotEncoder(
-    sparse_output=False,
-    handle_unknown='ignore'
-)
-```
-
-The `ColumnTransformer` was **fitted only on the training data**, then reused to transform the test data. See [the Airtight Exam Room](#-the-airtight-exam-room-leakage-prevention) for why this matters.
-
-</details>
-
----
-
-##  The Model
+The script and notebook specify the same estimator and explicit parameters:
 
 ```python
 RandomForestClassifier(
@@ -183,190 +124,200 @@ RandomForestClassifier(
 )
 ```
 
-| Why Random Forest? | What it gives this problem |
-|---|---|
-|  Handles nonlinear patterns | Fraud rarely follows a clean straight line |
-|  Mixes feature types | Numbers and one-hot categories work together |
-|  Ensemble of trees | Many trees voting beats one tree guessing |
-|  `class_weight='balanced'` | Makes missing a fraud hurt more during training |
+A Random Forest can model nonlinear interactions between amounts, temporal features, and encoded categories without requiring feature scaling. The configured depth and leaf constraints limit tree growth, while `n_jobs=-1` uses all available processors. No model comparison or hyperparameter search is recorded.
 
-> [!TIP]
-> **The secret weapon is `class_weight='balanced'`.** Instead of resampling the data with SMOTE or undersampling, the model is simply *punished harder* for missing the rare fraud class. The full, undistorted dataset stays intact.
+**Class weighting:** scikit-learn's `balanced` mode assigns training weights inversely proportional to class frequency: `n_samples / (n_classes * class_count)`. This increases the rare class's contribution to fitting; it does not resample the input dataset or encode measured financial costs. See the [estimator documentation](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html).
 
----
+**Decision rule:** hard labels come from `classifier.predict(Xtest_df)`, which selects the class with the highest mean probability across trees. For these binary labels this corresponds to fraud probability **greater than 0.5**; an exact tie selects class `0`. PR analysis uses `predict_proba(Xtest_df)[:, 1]`. **No explicit decision-threshold optimization or probability calibration is implemented.**
 
-##  Results
+## 07 Results & model evaluation
 
-Everything below is measured on **`fraudTest.csv`**, data the model never saw during training.
+The evaluation uses all **555,719 rows of the supplied test file**, including **2,145 frauds**. The table below reconciles the saved notebook report with the counts visible in both the notebook's embedded confusion matrix and the repository image.
 
-###  The Scoreboard
-
-```
-Fraud Recall      ██████████████████░░  88%     caught 1,884 of 2,145 frauds
-Fraud Precision   ███████████░░░░░░░░░  57%     about 6 in 10 alerts are real fraud
-PR-AUC            █████████████████░░░  0.86    strong across all thresholds
-Accuracy          ████████████████████  99.69%  true, but misleading on its own
-```
-
-| Metric | Score | What it means in plain words |
+| Metric | Verified value | Evidence / calculation |
 |---|---:|---|
-| **Fraud Recall** | **88.00%** | Of all real thieves, the model caught 88% |
-| **Fraud Precision** | 57.00% | Of everyone the model flagged, 57% were truly thieves |
-| **PR-AUC** | 0.86 | Good precision/recall balance, even on this lopsided data |
-| **Accuracy** | 99.69% | Correct overall, but remember the 99.6% lazy baseline |
+| **Fraud recall** | **87.83%** | `1,884 / 2,145`; notebook report rounds to `0.88`. |
+| **Fraud precision** | **57.00%** | `1,884 / 3,305`; notebook report rounds to `0.57`. |
+| Fraud F1 | 0.6914 | `2 × TP / (2 × TP + FP + FN)`; report rounds to `0.69`. |
+| **PR-AUC** | **0.8610** | Saved notebook printout; both curve titles round to `0.86`. |
+| Accuracy | 99.6973% | Saved `accuracy_score`: `0.9969732904579472`; also matches the matrix. |
+| False-positive rate | 0.2567% | `1,421 / 553,574` legitimate transactions. |
 
-###  Where did the 2,145 real frauds go?
+The extra decimal places for recall, precision, F1, and false-positive rate are **derived from saved matrix counts**, not additional experiment outputs. PR-AUC is computed by `precision_recall_curve` followed by `auc(recall_vals, precision_vals)`: **trapezoidal area under the PR curve**, not `average_precision_score`.
 
-```mermaid
-pie showData title Actual fraud cases in the test set
-    "Caught (True Positives)" : 1884
-    "Missed (False Negatives)" : 261
-```
+### Confusion matrix counts
 
-> [!IMPORTANT]
-> **Why recall is the priority:** a missed fraud is real money gone. A false alarm is usually just a quick check or a text message to the customer. So the model was tuned to cast a *wider net*. The 57% precision is a deliberate trade-off, not an oversight.
+Rows are actual labels; columns are predicted labels.
 
-###  Confusion Matrix
+| Actual / predicted | Legitimate (`0`) | Fraud (`1`) | Total |
+|---|---:|---:|---:|
+| **Legitimate (`0`)** | **TN: 552,153** | **FP: 1,421** | 553,574 |
+| **Fraud (`1`)** | **FN: 261** | **TP: 1,884** | 2,145 |
+| **Total** | **552,414** | **3,305** | **555,719** |
 
-<p align="center">
-  <img src="images/Confusion%20M.png" alt="Confusion Matrix" width="600">
-</p>
+The model identifies **1,884 of 2,145 frauds**, leaving **261 undetected**. Of **3,305 alerts**, **1,421 (43.00%)** are legitimate transactions. That combination illustrates why a low false-positive rate can still produce a substantial false-alert workload when fraud is rare. It is an observed operating point, not evidence of a deliberately optimized review policy or quantified savings.
 
-| | Result | Count | Meaning |
-|:-:|---|---:|---|
-|  | True Positive | 1,884 | Fraud correctly caught |
-|  | False Negative | 261 | Fraud that slipped through |
-|  | True Negative | 552,137 | Legitimate, correctly cleared |
-|  | False Positive | 1,437 | Legitimate, wrongly flagged |
+### Evidence and reproducibility boundary
 
-Put simply: to catch **1,884** thieves, the model raised **1,437** false alarms among more than half a million honest purchases.
+The [notebook](credit_card_fraud_detection.ipynb) stores the classification report and accuracy in its **Accuracy & Classification Report** cell, the matrix under **Confusion Matrix**, and `PR-AUC Score: 0.8610` under **Precision-Recall Curve**. The [script](credit_card_fraud_detection.py) contains the matching evaluation logic but no stored run results.
 
-###  Precision-Recall Curve
+The notebook's execution counters are nonsequential, and its encoding cell has no execution count despite later fitted-model outputs. Consequently, the saved artifacts substantiate the reported results but do **not** demonstrate a clean, top-to-bottom run of the current notebook. Dependencies are unpinned, and neither raw predictions nor a fitted model are stored. Exact reproduction remains to be confirmed in a fresh run with the downloaded data.
 
-<p align="center">
-  <img src="images/Precision-Recall%20Curve.png" alt="Precision-Recall Curve" width="600">
-</p>
+## 08 Visual analysis
 
-On data this lopsided, the ROC curve can look flattering because it is dominated by the huge pile of easy true negatives. The **Precision-Recall curve** looks only at the rare fraud class, so it is the more honest judge.
+### Confusion matrix
 
-<p align="center"><b> PR-AUC = 0.86</b></p>
+![Confusion matrix: 552,153 true negatives, 1,421 false positives, 261 false negatives, and 1,884 true positives.](images/Confusion%20M.png)
 
----
+*The repository's saved chart confirms the error counts above. The large legitimate class dominates the color scale, so read the fraud-row annotations alongside the precision and recall metrics.*
 
-##  The Airtight Exam Room (Leakage Prevention)
+### Precision–recall curve
 
-Think of the test set as a **final exam**. If the student sees the exam questions while studying, a perfect score means nothing. Here, the test data is locked away until the very end.
+![Saved precision–recall curve for the fraud class, with a title reporting PR-AUC of 0.86.](images/Precision-Recall%20Curve.png)
 
-```mermaid
-flowchart TB
-    subgraph TRAIN[" Study room: training data"]
-        direction LR
-        T1["Feature engineering"] --> T2[" FIT the ColumnTransformer<br/>(only here)"] --> T3["Transform training data"] --> T4[" Train Random Forest"]
-    end
+*The curve shows how fraud precision and recall vary across score thresholds. Precision falls as recall approaches one. The title rounds the notebook's 0.8610 area to 0.86; no business operating threshold is selected by this plot.*
 
-    subgraph TEST[" Exam room: test data"]
-        direction LR
-        E1["Same feature engineering"] --> E2["Transform with the<br/>already-fitted transformer<br/>(never re-fit)"] --> E3[" Evaluate model"]
-    end
+Both are existing evaluation images, and their values agree with the notebook's embedded plots. They are displayed as stored; the purple chart styling is preserved.
 
-    T2 -. "fitted transformer is reused" .-> E2
-    T4 --> E3
+## 09 Data leakage & reliability
 
-    style TRAIN fill:#1e1b4b,stroke:#6366f1,color:#fff
-    style TEST fill:#7f1d1d,stroke:#ef4444,color:#fff
-```
-
-The `OneHotEncoder` / `ColumnTransformer` is **fitted exclusively on the training set** and then only *applied* to the test set. That guarantees the reported numbers reflect real generalization, not information the model quietly absorbed from the exam.
-
----
-
-##  Technologies Used
-
-| Category | Tools |
+| Demonstrated safeguard | What it establishes |
 |---|---|
-| Language |  Python |
-| Data Handling | Pandas, NumPy |
-| Machine Learning | Scikit-learn (Random Forest Classifier) |
-| Visualization | Matplotlib |
-| Environment | Jupyter Notebook |
+| Separate supplied CSVs | The code fits the estimator on training rows and evaluates on test rows. |
+| Target removed before transformation | `is_fraud` is not included among predictors. |
+| `ct.fit_transform(Xtrain_df)` followed by `ct.transform(Xtest_df)` | Encoder categories are learned only from training features. |
+| Identical deterministic date transformations | Test-set statistics are not used to construct the timestamp and fixed-year age features. |
 
----
+These safeguards address specific leakage routes. They do not establish complete independence: the code does not audit duplicate records, cardholder overlap, timestamp boundaries, or entity overlap between files. Removing a card number does not remove every customer-specific signal; demographics and coordinates remain.
 
-##  Project Structure
+There is one fixed held-out evaluation, with no validation split, cross-validation, confidence intervals, or repeated time-window tests. The repository also does not document how the configuration was selected, so the saved artifacts cannot establish whether earlier decisions were influenced by test performance. A later test period from the same simulator does not establish robustness to new fraud strategies or real-world distribution shifts.
 
-```
+## 10 Repository structure
+
+The tracked project files are:
+
+```text
 Credit-Card-Fraud-Detection/
-│
-├── images/
-│   ├── Confusion M.png
-│   └── Precision-Recall Curve.png
-├── data/
-│   ├── fraudTrain.csv
-│   └── fraudTest.csv
-├── notebooks/
-│   └── credit_card_fraud_detection.ipynb
-├── README.md
-└── requirements.txt
+|-- images/
+|   |-- Confusion M.png
+|   `-- Precision-Recall Curve.png
+|-- .gitignore
+|-- credit_card_fraud_detection.ipynb
+|-- credit_card_fraud_detection.py
+|-- LICENSE
+|-- README.md
+`-- requirements.txt
 ```
 
----
+The notebook and script are at the **repository root**. There are no tracked `data/`, `notebooks/`, `src/`, or `models/` directories. Running the project requires two downloaded CSVs at the root; the setup below also creates an ignored local `venv/` directory.
 
-##  Installation
+## 11 Getting started
+
+### Prerequisites
+
+Use a **Python 3.11 environment** as a starting point: the notebook records Python **3.11.9**. The code requires **scikit-learn 1.2 or later** for the [`sparse_output` encoder argument](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html). This is API compatibility guidance, not a tested version matrix. [Requirements](requirements.txt) list pandas, NumPy, scikit-learn, Matplotlib, seaborn, and Jupyter without pinned versions; the original complete environment is not captured.
+
+The full run loads both CSVs into memory, creates dense encoded arrays and DataFrames, and fits 150 trees. Allow substantial memory and training time; no hardware, runtime, or peak-memory benchmark is recorded.
+
+### Clone and create an environment
 
 ```bash
-# 1. Clone the repository
 git clone https://github.com/khaled-amireh/Credit-Card-Fraud-Detection.git
 cd Credit-Card-Fraud-Detection
-
-# 2. Create and activate a virtual environment (recommended)
-python -m venv venv
-source venv/bin/activate      # On Windows: venv\Scripts\activate
-
-# 3. Install dependencies
-pip install -r requirements.txt
-
-# 4. Launch the notebook
-jupyter notebook notebooks/credit_card_fraud_detection.ipynb
 ```
 
-> [!CAUTION]
-> The raw CSV files are **not included** in this repository because of their size. Download `fraudTrain.csv` and `fraudTest.csv` from the [Kaggle dataset page](https://www.kaggle.com/datasets/kartik2112/fraud-detection) and place them in the `data/` folder before running the notebook.
+**Windows — PowerShell**
 
----
+```powershell
+py -3.11 -m venv venv
+.\venv\Scripts\Activate.ps1
+```
 
-##  Limitations
+If PowerShell blocks activation, use the environment's interpreter directly in subsequent Python commands: `.\venv\Scripts\python.exe`. This avoids changing execution policy.
 
-<details>
-<summary><b>Click to see what this model does not do (yet)</b></summary>
+**macOS / Linux — bash or zsh**
 
-<br/>
+```bash
+python3.11 -m venv venv
+source venv/bin/activate
+```
 
-- The model has not been cross-validated across multiple folds, so the metrics reflect one fixed test split.
-- Precision of 57% means a meaningful share of alerts are false alarms; in production this must be weighed against the cost of manual review.
-- The classification threshold behind the headline Recall/Precision was not explicitly tuned. The Precision-Recall curve suggests more gains are possible by adjusting it to a specific business cost trade-off.
+With the environment active, install dependencies:
 
-</details>
+```bash
+python -m pip install -r requirements.txt
+```
 
----
+### Download the dataset
 
-##  Future Improvements
+1. Open the [Kaggle dataset page](https://www.kaggle.com/datasets/kartik2112/fraud-detection) and download the dataset archive. Sign in if prompted.
+2. Extract **`fraudTrain.csv`** and **`fraudTest.csv`**.
+3. Place both files **beside the script and notebook**, not inside a `data/` folder:
 
-- [ ] Tune the decision threshold against a real cost function (missed fraud vs. false alarm)
-- [ ] Add cross-validation for more robust estimates
-- [ ] Benchmark against XGBoost / LightGBM, common in production fraud systems
-- [ ] Use SHAP to explain *why* each transaction was flagged
-- [ ] Engineer geographic features, such as distance between cardholder and merchant
+```text
+Credit-Card-Fraud-Detection/
+|-- fraudTrain.csv                    # downloaded locally; ignored by Git
+|-- fraudTest.csv                     # downloaded locally; ignored by Git
+|-- credit_card_fraud_detection.py
+`-- credit_card_fraud_detection.ipynb
+```
 
----
+Both entry points call `pd.read_csv('fraudTrain.csv')` and `pd.read_csv('fraudTest.csv')`. Keep the current working directory at the repository root.
 
-##  Author
+### Run either entry point
 
-<p align="center">
-  <b>Khaled Amireh</b><br/>
-</p>
+**Notebook**
 
-<p align="center"><i>If this project helped you, drop a ⭐ on the repo.</i></p>
+```bash
+python -m notebook credit_card_fraud_detection.ipynb
+```
 
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:b91c1c,50:302b63,100:0f0c29&height=110&section=footer" alt="footer"/>
-</p>
+Choose the environment's Python kernel, restart it, and run all cells in order. A fresh run is necessary to evaluate reproducibility given the saved execution history. Exploration tables display in the notebook.
+
+**Python script**
+
+```bash
+python credit_card_fraud_detection.py
+```
+
+The script fits the model, prints training schema information, accuracy, the classification report, and PR-AUC, and opens Matplotlib figures. Its standalone `describe()` and missing-count expressions do not print tables as notebook cells do. Use an interactive plotting environment; `plt.show()` may block until a figure is closed. Neither entry point exports the fitted model, predictions, or chart files automatically, so running it does not update the tracked images.
+
+## 12 Technical decisions & trade-offs
+
+These interpretations explain the current design; they are not conclusions from controlled comparisons.
+
+| Implemented choice | Engineering rationale | Trade-off |
+|---|---|---|
+| Random Forest with growth constraints | Models nonlinear tabular interactions with no scaling step. | Fit cost and model size are unmeasured; superiority over other estimators is untested. |
+| Balanced class weights | Raises the minority class's contribution without explicit over/undersampling. | Does not select an alert threshold or optimize a financial cost function. |
+| One-hot encoding of two categorical fields | Avoids imposing an ordinal relationship on categories. | Dense representation consumes memory; unseen categories lose category-specific information. |
+| Remove IDs and several descriptive fields | Limits direct identifier use and potential categorical expansion. | Useful merchant, occupation, and geographic signal may be discarded. |
+| Emphasize fraud metrics and PR analysis | Makes missed fraud and false alerts visible under severe imbalance. | An aggregate curve does not determine review capacity, calibration, or deployment suitability. |
+
+## 13 Limitations
+
+- **Evidence is from saved artifacts.** Incomplete execution history, absent raw data in this checkout, and unpinned dependencies limit exact reproducibility claims.
+- **One simulator and one supplied split.** Entity independence, temporal boundaries, and robustness across periods or real payment populations have not been audited.
+- **False alerts remain substantial.** About 43% of alerts are false positives at the current prediction rule; actual investigation costs are unknown.
+- **Feature and decision policies are fixed.** Age uses the hard-coded year 2026; there is no threshold search, calibration, cost-sensitive evaluation, or feature ablation.
+- **Operational capabilities are absent.** No persisted preprocessing/model bundle, inference interface, schema validation, serving, monitoring, drift detection, or automated retraining is implemented. Missing-data remediation and subgroup performance analysis are also absent.
+
+## 14 Future roadmap
+
+All items below are **not implemented**.
+
+- [ ] Reproduce a clean notebook/script run; capture dependency versions, data checksums, and evaluation artifacts.
+- [ ] Audit duplicates, shared cardholders, and time boundaries; add time-aware and entity-aware validation where appropriate.
+- [ ] Compare configurations with cross-validation or repeated temporal holdouts, reserving a final untouched test set.
+- [ ] Optimize the decision threshold on validation data against review capacity and explicit false-positive/false-negative costs.
+- [ ] Assess probability calibration and report cost-sensitive metrics, uncertainty, and subgroup performance.
+- [ ] Benchmark gradient boosting alternatives, including XGBoost or LightGBM, under the same evaluation protocol.
+- [ ] Evaluate transaction-time age, cardholder–merchant distance, and past-only transaction-frequency features with ablation studies.
+- [ ] Add SHAP explanations and investigate common error patterns.
+- [ ] Persist preprocessing and the estimator together; build a reproducible inference workflow with input validation and tests.
+
+## 15 Author & license
+
+**Khaled Amireh** · [GitHub](https://github.com/khaled-amireh) · [Portfolio](https://portfolio-1kpn.onrender.com)
+
+Code is released under the [MIT License](LICENSE), copyright © 2026 Khaled Amireh. Dataset attribution and access remain with the [Kaggle source](https://www.kaggle.com/datasets/kartik2112/fraud-detection) and its credited generator.
